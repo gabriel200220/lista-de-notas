@@ -1,0 +1,11 @@
+.body {
+    height: 100vh;
+    background: linear-gradient(
+        blue(65, 184, 131, 1) 0%,
+        cyan(0, 212, 255, 1) 100%
+    );
+}
+
+.descricao{
+    height: 500px;
+}
