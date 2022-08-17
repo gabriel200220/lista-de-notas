@@ -40,6 +40,17 @@ function validarUsuario() {
     alert("senhas não correspondem");
     return;
   }
+  verSeExiste();
 
   salvarUsuario();
+}
+
+function verSeExiste() {
+  const resultado = listaDeUsuarios.find(
+    (usuario) => usuario.email == email.value
+  );
+
+  if (resultado) {
+    alert("usuário ja existe");
+  }
 }
