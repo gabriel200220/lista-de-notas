@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="lista.css">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="lista.css">
+  <title>Document</title>
 </head>
-<body>  
-
-<div class="titulo">
-    <h1 class="titulo" id="titulo">Meus recados</h1>
+<body>
+  <div class="conteudo">
+    <div class="topo">
+      <input type="text" 
+        id="inputNomeTarefa"
+        placeholder="Descrição"
+         >
+         <input type="text" 
+         id="inputNomeTarefa"
+         placeholder="Detalhamento"
+          >
+          <button id="salvar">salvar</button>
+    </div>
+    <ul id="ListaTarefas">
+      <li>
+        <span class="textoTarefa">Tarefa 1</span>
+        <div>
+          <button class="btnAcao"> Editar</button>
+           
+          
+          <button class="btnAcao"> Apagar </button>
+           
+         
+        </div>
+      </li>
+    </ul>
   </div>
-  <div class="container">
-    <div  class="card">
-         <input class="input" type="text"  placeholder="Descrição">
-        <input class="input" type="text" placeholder="Detalhamento"><button class="buttom" id="salvar">salvar</button> 
-   
-      </div>
-  <div class="task-container"></div>
-</div>
-
 </body>
 <script src="lista.js"></script>
 </html>
- 

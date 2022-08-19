@@ -1,79 +1,82 @@
-body{
+body {
+  background: black;
+  color: aqua;
   margin: 0;
-  padding: 0;
-  background: linear-gradient(
-   90deg,  
-  rgb(41, 38, 239) 0%,
-  
-      rgb(94, 165, 236)100%
-
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-}
-
-.container {
-  border: 2px solid #fff;
-  padding: 30px 40px;
-  width: 40%;
-  min-width: 500px;
-  
-}
-.card{
-  background-color: #fff;
-  padding: 30px 20px;
-  border-radius: 5px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  display: flex;
-}
-.titulo{
-  font-family: 'Roboto', sans-serif;
-}
-
-.task-container{
-  background-color: #fff;
-  padding: 30px 20px;
-  border-radius: 5px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  display: flex; 
-  margin-top: 20px;
-}
-
-
-.task-container input {
-  flex: 3;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  border: 2px solid;
-  border-radius: 5px;
-  padding: 12px;
-  font-weight: 500;
-  
 }
-.buttom {
-  flex: 1;
-  border-radius: 5px;
+
+.conteudo {
+  margin: 0 auto;
+  width: 100%;;
+  max-width: 450px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background: #2b2a2a;
+  padding: 55px;
+  border-radius: 12px;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+.topo input {
+  width: 350px;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #191818;
   outline: none;
-  font-weight: 500;
-  height: 100%;
-  font-size: 1rem;
-  border: none;
-  background-color: #07bbbb;
+  background: #191818;
   color: white;
-  letter-spacing: 1px;
-  padding: 12px;
-  margin-left: 12px;
+}
+
+.topo button{
+  width: 80%;
+  padding: 10px 0px;
+  margin: 2px;
+  border: none;
+  border-radius: 12px;
+  height: 50px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  background-color: rgb(68, 252, 252);
   cursor: pointer;
   box-shadow: 0px 10px 40px -12px blue;
 }
 
-button:hover{
-  background-color: blue;
+.topo button:hover {
+  background: rgb(45, 60, 60);
   cursor: pointer;
 }
 
-input{
-  outline: none;
-  border-color: #1E90FF;
+#ListaTarefas{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#ListaTarefas li {
+  padding: 20px;
+  background: #191818;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnAcao{
+  display: flex;
+  margin: 3px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: cyan;
+  
+  
+}
+.btnAcao:hover{
+  background: rgb(45, 60, 60);
+  cursor: pointer;
 }
