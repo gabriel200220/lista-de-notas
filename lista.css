@@ -1,82 +1,97 @@
+@import 'https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css';
+
+.containerInput {
+	max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.containerInput input{
+    max-width: 320px;
+    align-items: center;
+}
+
+.container {
+    padding-bottom: 70px;
+    background-color: white;
+	max-width: 400px;
+	margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 2%;
+}
+
+.container #cleanBtn{
+    margin-left: 200px;
+    margin-top: 23px;
+    position: absolute;
+    right: 1;
+}
+
+.container #saveBtn{
+    margin-top: 23px;
+    position: absolute;
+    bottom: 1;
+}
+
+.item{
+    font-size: x-large;
+    border-bottom: 1px solid black;
+}
+
+h1 {
+	text-align: center;
+	margin: 20px 0 0 0;
+	font-size: xx-large;
+    font-weight: normal;
+    color: white;
+}
+
 body {
-  background: black;
-  color: aqua;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+	font-family: monospace;
+    color: #333;
+    background: rgb(107,131,255);
+    background: radial-gradient(circle, rgba(107,131,255,1) 0%, rgba(252,70,107,1) 100%);
 }
 
-.conteudo {
-  margin: 0 auto;
-  width: 100%;;
-  max-width: 450px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  background: #2b2a2a;
-  padding: 55px;
-  border-radius: 12px;
+html{
+    margin-top: 280px;
+    background: rgb(107,131,255);
+    background: radial-gradient(circle, rgba(107,131,255,1) 0%, rgba(252,70,107,1) 100%);
 }
 
-.topo {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 35px;
-}
-.topo input {
-  width: 350px;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #191818;
-  outline: none;
-  background: #191818;
-  color: white;
+#divPai {
+    align-items: center;
 }
 
-.topo button{
-  width: 80%;
-  padding: 10px 0px;
-  margin: 2px;
-  border: none;
-  border-radius: 12px;
-  height: 50px;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 800;
-  background-color: rgb(68, 252, 252);
-  cursor: pointer;
-  box-shadow: 0px 10px 40px -12px blue;
-}
+ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+ }
 
-.topo button:hover {
-  background: rgb(45, 60, 60);
-  cursor: pointer;
-}
-
-#ListaTarefas{
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-#ListaTarefas li {
-  padding: 20px;
-  background: #191818;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.btnAcao{
-  display: flex;
-  margin: 3px;
-  border-radius: 10px;
-  cursor: pointer;
-  background: cyan;
+ /* Tooltip container */
+.tooltiti {
+    position: absolute;
+    display: inline-block;
+  }
   
+  /* Tooltip text */
+  .tooltiti .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
   
-}
-.btnAcao:hover{
-  background: rgb(45, 60, 60);
-  cursor: pointer;
-}
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltiti:hover .tooltiptext {
+    visibility: visible;
+  }
