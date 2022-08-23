@@ -1,97 +1,186 @@
-@import 'https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css';
+* {
+    box-sizing: border-box;
+}
 
-.containerInput {
-	max-width: 400px;
-    margin: 0 auto;
+html {
+    min-height: 100vh;
+ }
+
+body {
+    height: 100vh;
+    margin: 0px;
     display: flex;
-}
-
-.containerInput input{
-    max-width: 320px;
-    align-items: center;
-}
-
-.container {
-    padding-bottom: 70px;
-    background-color: white;
-	max-width: 400px;
-	margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 2%;
-}
-
-.container #cleanBtn{
-    margin-left: 200px;
-    margin-top: 23px;
-    position: absolute;
-    right: 1;
-}
-
-.container #saveBtn{
-    margin-top: 23px;
-    position: absolute;
-    bottom: 1;
-}
-
-.item{
-    font-size: x-large;
-    border-bottom: 1px solid black;
+    flex-direction: column;
+    justify-content: stretch;
+    font-family: 'Khula', sans-serif;
+    font-family: 'Calligraffitti', cursive;
 }
 
 h1 {
-	text-align: center;
-	margin: 20px 0 0 0;
-	font-size: xx-large;
-    font-weight: normal;
-    color: white;
-}
-
-body {
-	font-family: monospace;
-    color: #333;
-    background: rgb(107,131,255);
-    background: radial-gradient(circle, rgba(107,131,255,1) 0%, rgba(252,70,107,1) 100%);
-}
-
-html{
-    margin-top: 280px;
-    background: rgb(107,131,255);
-    background: radial-gradient(circle, rgba(107,131,255,1) 0%, rgba(252,70,107,1) 100%);
-}
-
-#divPai {
-    align-items: center;
-}
-
-ul {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 1em;
-    text-indent: -1em;
- }
-
- /* Tooltip container */
-.tooltiti {
-    position: absolute;
-    display: inline-block;
-  }
-  
-  /* Tooltip text */
-  .tooltiti .tooltiptext {
-    visibility: hidden;
-    width: 200px;
-    background-color: black;
-    color: #fff;
+    padding-top: 2rem;
+    font-family: 'Khula', sans-serif;
+    font-weight: 100;
+    margin: 0px;
     text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-   
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-  }
+    font-size: 70px;
+    color: hsl(39, 100%, 71%);
+}
+
+.top {
+    
+    font-family: monospace, sans-serif;
+    border-bottom: 1px solid grey;
+    border-top: 5px solid grey;
+    background: whitesmoke;
+    z-index: 2;
+}
+
+.bottom {
+    background: white;
+    font-size: 2rem;
+    font-family: 'Calligraffitti', cursive;
+    flex: 1;
+    padding: 2rem;
+    
+}
+
+.form {
+    display: flex;
+    justify-content: center;
   
-  /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltiti:hover .tooltiptext {
-    visibility: visible;
-  }
+}
+
+.text-input {
+    border: 0px;
+    
+    padding: 0rem 1rem;
+    font-size: 1.6rem;
+    width: 30%;
+    font-family: 'Khula', sans-serif;
+    margin: 1rem 0.2rem;
+    border-radius: 0.5rem;
+    background: white;
+    color: darkgrey;
+    text-align: right;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px 1px inset;
+}
+
+.button {
+    width: 8%;
+    padding: 16px 0px;
+    margin: 20px;
+    border: none;
+    border-radius: 12px;
+    height: 50px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    background-color: rgb(68, 252, 252);
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px blue;
+}
+
+.button:hover {
+    background: blue;
+    
+}
+
+.button:active {
+    background: hsl(39, 100%, 92%);
+    box-shadow: rgba(0, 0, 0, 0.8) 3px 3px 10px inset;
+    transition: box-shadow 0.1s ease-in;
+}
+
+/* Javascript en standaard dus onzichtbare classes! */
+.errandlist {
+    padding: 0.2rem 1rem;
+   
+}
+
+.left {
+    display: flex;
+    align-items: baseline;
+}
+
+.errand {
+    list-style-type: none;
+    border: 2px solid #ffcb6b;
+    background: grey;
+    color: #ffcb6b;
+    padding: 0.3rem 1rem 0.3rem 5rem;
+    transition: all .3s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    cursor: pointer;
+    position: relative;
+}
+
+.errand:nth-child(even) {
+    background: darkgrey;
+}
+
+.errand:hover {
+    transform: scale(1.01);
+}
+
+.done {
+    margin-left: 5rem;
+}
+
+.erranddelete {
+    background: transparent;
+    font-size: 1.6rem;
+    font-family: 'Khula', sans-serif;
+    color: white;
+    border: 0px;
+    padding: 0rem 2rem;
+    height: 61px;
+    border-radius: 0.6rem;
+}
+
+.erranddelete:hover {
+    background-color: tomato;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    font-size: 2rem;
+    color: rgb(255, 180, 167);
+}
+
+.checked {
+    text-decoration: line-through;
+    background: green;
+}
+
+.checked:nth-child(even) {
+    text-decoration: line-through;
+    background: limegreen;
+}
+
+.checked::before {
+    content: " ";
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 17px;
+    left: 25px;
+    transform: rotate(45deg);
+    height: 20px;
+    width: 10px;
+    z-index: 2;
+}
+
+.visible {
+    font-size: 50px;
+    font-family: 'Khula', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    margin: 2rem 24rem;
+    color: grey;
+}
+
+.hidden {
+    display: none;
+}
