@@ -1,10 +1,12 @@
-document.getElementById("btn-entrar").addEventListener("click", entrar);
-
-document
-  .getElementById("btn-cadastro")
-  .addEventListener("click", realizarCadastro);
-
 let listaDeUsuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+
+const btnEntrar=document.getElementById("btn-entrar")
+btnEntrar.addEventListener("click", entrar);
+
+const btnCadastro=document.getElementById("btn-cadastro")
+  btnCadastro.addEventListener("click", realizarCadastro);
+
+
 
 function entrar() {
   if (!email.value || !senha.value) {
@@ -18,6 +20,7 @@ function entrar() {
 
   if (!usuario) {
     alert("Usuario invalido ou inexistente");
+    realizarCadastro()
     return;
   }
 

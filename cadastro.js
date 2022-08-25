@@ -6,31 +6,6 @@ let email = document.getElementById("email");
 let senha = document.getElementById("senha");
 let senha2 = document.getElementById("senha2");
 
-function salvarUsuario() {
-  const usuario = {
-    email: email.value,
-    senha: senha.value,
-    recados: []
-  };
-
-  // lista.adicionar(usuario)
-  listaDeUsuarios.push(usuario);
-
-  salvarListaUsuariosNoCache();
-}
-
-function redirecionarUsuario() {
-  window.location.href = "entrar.html";
-}
-
-function salvarListaUsuariosNoCache() {
-  const novosUsuarios = JSON.stringify(listaDeUsuarios);
-
-  localStorage.setItem("usuarios", novosUsuarios);
-
-  redirecionarUsuario();
-}
-
 function validarUsuario() {
   if (!email.value || !senha.value) {
     alert("Campos Vazios");
@@ -45,7 +20,6 @@ function validarUsuario() {
 
   salvarUsuario();
 }
-
 function verSeExiste() {
   const resultado = listaDeUsuarios.find(
     (usuario) => usuario.email == email.value
@@ -53,5 +27,30 @@ function verSeExiste() {
 
   if (resultado) {
     alert("usuário ja existe");
+    return;
   }
 }
+function salvarUsuario() {
+  const usuario = {
+    email: email.value,
+    senha: senha.value,
+    recados: []
+  };
+
+  // lista.adicionar(usuario)
+  listaDeUsuarios.push(usuario);
+
+  salvarListaUsuariosNoCache("usuarios",listaDeUsuarios);
+}
+
+function salvarListaUsuariosNoCache(key,valor) {
+  localStorage.setItem(key, JSON.stringify(valor));
+
+  redirecionarUsuario();
+}
+function redirecionarUsuario() {
+  window.location.href = "entrar.html";
+}
+
+
+
