@@ -36,7 +36,8 @@ listaTabela() {
 
        let imgEdit = document.createElement('img');
        imgEdit.src = 'caneta.png';
-      
+       imgEdit.setAttribute("onclick", "produto.preparaEditacao("+ JSON.stringify(this.arrayProdutos[i]) +")");
+       
        let imgDelete = document.createElement('img');
        imgDelete.src = 'prancheta.png';
        imgDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
@@ -49,6 +50,12 @@ listaTabela() {
 adicionar(produto) {
 this.arrayProdutos.push(produto);
 this.id++;
+}
+
+preparaEditacao(dados) {
+  document.getElementById('produto').value = dados.nomeProduto;
+  document.getElementById('preço').value = dados.valor;
+  document.getElementById('btn1').innerText = 'Atualizar';
 }
 
 lerDados() {
