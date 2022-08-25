@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="lista.css">
-    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Khula:300" rel="stylesheet">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Moetegijnowadoenofnie?</title>
+    <link rel="stylesheet" href="lista.css">
+    <title>Document</title>
 </head>
-
 <body>
-    <section class="top">
-
-        <h1>recados</h1>
-        <form class="form">
-            <input type="text" class="text-input" placeholder="Descrição" autofocus />
-            <button type="button" class="button">Salvar</button>
-            </form>
-    </section>
-    <div class="bottom">
-       <ul id="recado" class="errandlist">
-        
-        
-         
-
-       </ul>
-
-       <div class="hidden erranddone"></div>
+    <header>
+        <h1>Meus recados</h1>
+    </header>
+<main>
+    <div class="title">
+        <h2>Produtos</h2>
+        <span>Lista de recados</span>
     </div>
-    <script src="./recados.js"></script>
-</body>
 
+    <div class="card">
+        <div class="lineInput">
+            <label>Detalhamento</label>
+            <input type="text" id="produto" placeholder="Detalhamento">
+        </div>
+       
+        <div class="lineInput">
+            <label>descrição</label>
+            <input type="text" id="preço" placeholder="descrição">
+        </div>
+         
+        <button onclick="produto.salvar()">Salvar
+        <button onclick="produto.excluir()">Cancelar</button>
+    </div>
+
+    <div class="content">
+       <table border="1">
+        <thead>
+           
+            <th>ID</th>
+            <th>Produto</th>
+            <th>Valor</th>
+            <th acao class="center">Ações</th>
+        </thead>
+        <tbody id="tbody"> 
+           
+        </tbody>
+       </table>
+    </div>
+    
+</main>
+       
+
+    
+</body>
+<script src="recados.js"></script>
 </html>

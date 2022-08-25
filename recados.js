@@ -1,35 +1,89 @@
-const textInput = document.querySelector(".text-input");
-const button = document.querySelector(".button");
-const listItem = document.querySelector("#recado");
-const deleteThis = document.querySelector(".visible");
+class Produto {
+  constructor() {
+      this.id = 1;
+      this.arrayProdutos = [];
+  }
 
+  salvar() {
+ let produto = this.lerDados();
 
+ if(this.validaCampos(produto)){
+ this.adicionar(produto);
+ }
 
+ this.listaTabela();
+  this.cancelar();
+}
 
-button.addEventListener('click', function () {
-    
-    if (textInput.value === "") {
-    window.alert('digite um recado!');
-    } else {
-        
-        listItem.innerHTML += `<li class="errand">
-        ${textInput.value}<button class="erranddelete">
-        X</button></li>`;
-        textInput.value = '';
-        
-    }
-});
+listaTabela() {
+  let tbody = document.getElementById('tbody');
+  tbody.innerText = '';
 
+  for(let i = 0; i < this.arrayProdutos.length; i++) {
+       let tr = tbody.insertRow();
 
+       let td_id = tr.insertCell();
+       let td_produto = tr.insertCell();
+       let td_valor = tr.insertCell();
+       let td_acao = tr.insertCell();
 
-listItem.addEventListener('click', function (event) {
-        if (event.target.classList.contains('erranddelete')) {
-        event.target.closest(".errand").remove();
-    } else {
-    event.target.classList.toggle('checked');
-    }
+       td_id.innerText = this.arrayProdutos[i].id;
+       td_produto.innerText = this.arrayProdutos[i].nomeProduto;
+       td_valor.innerText = this.arrayProdutos[i].valor;
+       
 
-});
+       td_id.classList.add('center');
 
+       let imgEdit = document.createElement('img');
+       imgEdit.src = 'caneta.png';
+      
+       let imgDelete = document.createElement('img');
+       imgDelete.src = 'prancheta.png';
 
+       td_acao.appendChild(imgEdit);
+       td_acao.appendChild(imgDelete);
+  }
+}
 
+adicionar(produto) {
+this.arrayProdutos.push(produto);
+this.id++;
+}
+
+lerDados() {
+let produto = {}
+
+produto.id = this.id;
+produto.nomeProduto = document.getElementById('produto').value;
+produto.valor = document.getElementById('preço').value;
+
+return produto;
+  }
+
+  validaCampos(produto) {
+     let msg = '';
+      
+     if(produto.nomeProduto == ''){
+           msg += '- Informe a descrição \n';
+      }
+
+      if(produto.valor == ''){
+          msg += '- Informe o detalhamento \n';
+     }
+     
+     if(msg != ''){
+      alert(msg);
+      return false
+     }
+
+     return true;
+     
+  }
+  
+cancelar() { 
+  document.getElementById('produto').value = '';
+  document.getElementById('preço').value = '';
+  }
+}
+
+var produto = new Produto();
