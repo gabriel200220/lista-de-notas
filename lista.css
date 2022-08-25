@@ -76,3 +76,14 @@ table td img {
 .center {
     text-align: center;
 }
+
+.sair {
+    margin: 5px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 185vh;
+    mar
+
+}
