@@ -98,7 +98,7 @@ cancelar() {
   document.getElementById('produto').value = '';
   document.getElementById('preço').value = '';
 
-  document,getElementById('btn1').innerText = 'Salvar';
+  document.getElementById('btn1').innerText = 'Salvar';
   this.editId = null;
   }
  
