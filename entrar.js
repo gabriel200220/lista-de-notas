@@ -21,6 +21,13 @@ function entrar() {
     return;
   }
 
+  const usuarioLogado = {
+    email: usuario.email,
+    recados: usuario.recados,
+  }
+
+  localStorage.setItem('UsuarioOn', JSON.stringify(usuarioLogado));
+
   abrirListaDeRecados();
 }
 

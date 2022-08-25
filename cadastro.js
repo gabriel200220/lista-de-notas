@@ -10,6 +10,7 @@ function salvarUsuario() {
   const usuario = {
     email: email.value,
     senha: senha.value,
+    recados: []
   };
 
   // lista.adicionar(usuario)
