@@ -2,6 +2,7 @@ class Produto {
   constructor() {
       this.id = 1;
       this.arrayProdutos = [];
+      this.editId = null;
   }
 
   salvar() {
@@ -91,6 +92,9 @@ return produto;
 cancelar() { 
   document.getElementById('produto').value = '';
   document.getElementById('preço').value = '';
+
+  document,getElementById('btn1').innerText = 'salvar';
+  this.editId = null;
   }
   deletar(id) {
     if(confirm('Deseja mesmo excluir?' + id)){
