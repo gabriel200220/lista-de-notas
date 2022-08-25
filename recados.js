@@ -9,7 +9,12 @@ class Produto {
  let produto = this.lerDados();
 
  if(this.validaCampos(produto)){
- this.adicionar(produto);
+  if(this.editId == null){
+    this.adicionar(produto);
+  }else {
+    this.atualizar(this.editId, produto);
+  }
+  
  }
 
  this.listaTabela();
@@ -93,10 +98,11 @@ cancelar() {
   document.getElementById('produto').value = '';
   document.getElementById('preço').value = '';
 
-  document,getElementById('btn1').innerText = 'salvar';
+  document,getElementById('btn1').innerText = 'Salvar';
   this.editId = null;
   }
-  deletar(id) {
+ 
+deletar(id) {
     if(confirm('Deseja mesmo excluir?' + id)){
       let tbody = document.getElementById('tbody');
     for(let i = 0; i < this.arrayProdutos.length; i++) {
