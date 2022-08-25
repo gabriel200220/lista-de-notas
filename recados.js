@@ -86,7 +86,8 @@ cancelar() {
   document.getElementById('preço').value = '';
   }
   deletar(id) {
-    let tbody = document.getElementById('tbody');
+    if(confirm('Deseja mesmo excluir?' + id)){
+      let tbody = document.getElementById('tbody');
     for(let i = 0; i < this.arrayProdutos.length; i++) {
       if(this.arrayProdutos[i].id == id) {
         this.arrayProdutos.splice(i, 1);
@@ -94,6 +95,8 @@ cancelar() {
       }
     }
   }
+    }
+    
 }
 
 var produto = new Produto();
