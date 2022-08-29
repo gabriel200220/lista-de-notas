@@ -208,11 +208,34 @@ function imprimirRecados() {
           }
         }
 
-function editarRecado(id){
-    
 
-  console.log( 'editou ',id)
-}
+        function editarRecado (id){
+          let det=document.getElementById('detalhamento');
+          let des=document.getElementById('descricao');
+          const index= usuarioON.recados.findIndex(valor => valor.id === id);
+          if(index<0){
+              alert('Recado não encontrado')
+              return;
+          }
+          det.value=usuarioON.recados[index].id
+          des.value=usuarioON.recados[index].id
+      
+          let editar=document.getElementById('btn1')
+          editar.innerHTML='Atualizar'
+          editar.onclick=()=>atualizaRecado(editar,det,des,index)
+      }
+    
+      function atualizaRecado(editar,det,des,index){
+          UsuarioON.recados[index].det=det.value
+          UsuarioON.recados[index].des=des.value
+          localStorage.setItem('UsuarioON'),JSON.stringify(UsuarioON)
+          imprimirRecados() // nome de tua função de imprimir
+          setTimeOut(()=>{
+            editar.innerHTML='Salvar'
+            editar.removeAttribute('onclick')
+          },1000)
+      }
+
 function deletarRecado(id){
   const confirmeRecado = confirm('Tem certeza que deseja apagar?')
   if(!confirmeRecado){
@@ -226,6 +249,9 @@ function deletarRecado(id){
 
   
 }
+ 
+
+
         
         
         function getItemStorage(key){

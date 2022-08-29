@@ -3,7 +3,7 @@
 }
 
 body{
-  background-color: rgb(223, 228, 228); 
+  background-color: rgb(122, 229, 229); 
 }
 
 header{
@@ -11,6 +11,7 @@ header{
     padding: 10px;
     color: white;
     text-align: center;
+    
 }
 
 main {
@@ -22,6 +23,8 @@ main {
     padding: 20px;
     margin-top: 15px;
     border-radius: 5px;
+    box-shadow: 0px 10px 40px -12px blue;
+    margin: 40px;
 }
 
 .LineInput {
@@ -84,6 +87,12 @@ table td img {
     cursor: pointer;
     border-radius: 5px;
     margin-left: 185vh;
-    mar
+    background-color: aliceblue;
+    margin-top: 400px;
+    
 
+}
+
+.astro1{
+    width: 120px;
 }
