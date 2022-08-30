@@ -134,9 +134,9 @@ imprimirRecados();
 
 let detalhamentoInput = document.getElementById("detalhamento");
 let descricaoInput = document.getElementById("descricao");
-let btnSalvar = document.getElementById("btn1");
 
-btnSalvar.addEventListener("onclick", criarRecado);
+
+
 
 function criarRecado() {
   if (!detalhamento.value || !descricao.value) {
@@ -170,68 +170,79 @@ function imprimirRecados() {
 
   for (let i in usuarioON.recados) {
     console.log("recados recarregados");
-    let tr = tbody.insertRow();
-
-    let td_id = tr.insertCell();
-    let td_detalhamento = tr.insertCell();
-    let td_descricao = tr.insertCell();
-    let td_acao = tr.insertCell();
-
     let indice = Number(i) + 1;
+    let tr = document.createElement('tr')
 
-    td_id.innerHTML = indice;
-    td_detalhamento.innerHTML = usuarioON.recados[i].detalhamento;
+    let td_id = document.createElement('th')
+    td_id.innerText =`${indice}`;
+    td_id.classList.add("center");
+
+    let td_detalhamento = document.createElement('td')
+     td_detalhamento.innerHTML = usuarioON.recados[i].detalhamento;
+
+    let td_descricao = document.createElement('td')
     td_descricao.innerHTML = usuarioON.recados[i].descricao;
 
-    td_id.classList.add("center");
+    let td_acao = document.createElement('td')
+
 
     let imgEdit = document.createElement("img");
     imgEdit.src = "caneta.png";
-    imgEdit.onclick = () => editarRecado(i);
+    imgEdit.onclick = () => editarRecado(usuarioON.recados[i].id);
 
     let imgDelete = document.createElement("img");
     imgDelete.src = "prancheta.png";
-    imgDelete.onclick = () => deletarRecado(i);
+    imgDelete.onclick = () => deletarRecado(usuarioON.recados[i].id);
 
     td_acao.appendChild(imgEdit);
     td_acao.appendChild(imgDelete);
+    tr.appendChild(td_id);
+    tr.appendChild(td_detalhamento);
+    tr.appendChild(td_descricao);
+    tr.appendChild(td_acao);
+    tbody.appendChild(tr);
   }
 }
 
 function editarRecado(index) {
-  let det = document.getElementById("detalhamento");
-  let des = document.getElementById("descricao");
+  const capturaRecado = usuarioON.recados.findIndex((element) => element.id === index)
 
-  if (index < 0) {
+  if (capturaRecado < 0) {
     return alert("Recado não encontrado");
   }
 
-  index = parseInt(index);
+  detalhamentoInput.value = usuarioON.recados[capturaRecado].detalhamento;
+  descricaoInput.value = usuarioON.recados[capturaRecado].descricao;
 
-  det.value = usuarioON.recados[index].detalhamento;
-  des.value = usuarioON.recados[index].descricao;
+  let btnEditar = document.getElementById("btn1");
+  btnEditar.innerHTML = "Atualizar";
+ 
+  btnEditar.onclick = () =>modificaRecado(btnEditar,capturaRecado)
+  console.log('botaoSalvarAntes', btnEditar);
 
-  btnSalvar.innerHTML = "Atualizar";
-  btnSalvar.removeAttribute("onclick");
-  btnSalvar.onclick = () => atualizaRecado(index);
+  
 }
 
-function atualizaRecado(index) {
-  let det = document.getElementById("detalhamento");
-  let des = document.getElementById("descricao");
+function modificaRecado(btn,index) {
+ 
 
-  usuarioON.recados[index].detalhamento = det.value;
-  usuarioON.recados[index].descricao = des.value;
+  usuarioON.recados[index].detalhamento = detalhamentoInput.value;
+  usuarioON.recados[index].descricao = descricaoInput.value;
 
   setItemStorage("UsuarioOn", usuarioON);
   imprimirRecados();
-
+  
   setTimeout(() => {
-    btnSalvar.innerHTML = "Salvar";
-    btnSalvar.removeAttribute("onclick");
-    btnSalvar.onclick = () => editarRecado(index);
-  }, 1000);
+    btn.innerHTML = "Salvar";
+    btn.onclick = () => criarRecado();
+    
+   console.log('botaoSalvar', btnSalvar);
+    
+  }, 6000);
+  
 }
+
+
 
 function deletarRecado(index) {
   const confirmeRecado = confirm("Tem certeza que deseja apagar?");
@@ -240,7 +251,7 @@ function deletarRecado(index) {
     return console.log("não apagou ", index);
   }
 
-  const deletarRecados = usuarioON.recados.filter((value, i) => i != index);
+  const deletarRecados = usuarioON.recados.filter((value) => value.id !== index);
   usuarioON.recados = deletarRecados;
 
   setItemStorage("UsuarioOn", usuarioON);
