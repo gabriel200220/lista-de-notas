@@ -3,7 +3,7 @@
 }
 
 body{
-  background-color: rgb(122, 229, 229); 
+  background-color: rgb(7, 226, 226); 
 }
 
 header{
@@ -50,6 +50,7 @@ button{
 
 button:hover {
     background-color: rgb(127, 127, 241);
+    cursor: pointer;
 }
 .content{
     margin-top: 15px;
@@ -69,6 +70,7 @@ table th, td {
     
     padding: 1px 5px;
     text-align: left;
+    
 }
 
 table td img {
@@ -78,6 +80,7 @@ table td img {
 
 .center {
     text-align: center;
+    width: 200px;
 }
 
 .sair {
