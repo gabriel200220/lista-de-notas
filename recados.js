@@ -14,7 +14,7 @@
 //   }else {
 //     this.atualizar(this.editId, produto);
 //   }
-  
+
 //  }
 
 //  this.listaTabela();
@@ -36,14 +36,13 @@
 //        td_id.innerText = this.arrayProdutos[i].id;
 //        td_produto.innerText = this.arrayProdutos[i].nomeProduto;
 //        td_valor.innerText = this.arrayProdutos[i].valor;
-       
 
 //        td_id.classList.add('center');
 
 //        let imgEdit = document.createElement('img');
 //        imgEdit.src = 'caneta.png';
 //        imgEdit.setAttribute("onclick", "produto.preparaEditacao("+ JSON.stringify(this.arrayProdutos[i]) +")");
-       
+
 //        let imgDelete = document.createElement('img');
 //        imgDelete.src = 'prancheta.png';
 //        imgDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
@@ -78,7 +77,7 @@
 
 //   validaCampos(produto) {
 //      let msg = '';
-      
+
 //      if(produto.nomeProduto == ''){
 //            msg += '- Informe a descrição \n';
 //       }
@@ -86,24 +85,24 @@
 //       if(produto.valor == ''){
 //           msg += '- Informe o detalhamento \n';
 //      }
-     
+
 //      if(msg != ''){
 //       alert(msg);
 //       return false
 //      }
 
 //      return true;
-     
+
 //   }
-  
-// cancelar() { 
+
+// cancelar() {
 //   document.getElementById('produto').value = '';
 //   document.getElementById('preço').value = '';
 
 //   document.getElementById('btn1').innerText = 'Salvar';
 //   this.editId = null;
 //   }
- 
+
 // deletar(id) {
 //     if(confirm('Deseja mesmo excluir?' + id)){
 //       let tbody = document.getElementById('tbody');
@@ -115,163 +114,157 @@
 //     }
 //   }
 //     }
-    
+
 // }
 
 // var produto = new Produto();
-let usuarioON=getItemStorage('UsuarioOn')
-if(!usuarioON){
+let usuarioON = getItemStorage("UsuarioOn");
+if (!usuarioON) {
   sair();
 }
 
-const btnSair = document.getElementById('sair');
-btnSair.addEventListener('click', () => {
+const btnSair = document.getElementById("sair");
+btnSair.addEventListener("onclick", () => {
   atualizarRecados();
-  localStorage.removeItem('UsuarioOn');
+  localStorage.removeItem("UsuarioOn");
   sair();
-})
+});
 
- imprimirRecados()
+imprimirRecados();
 
-let detalhamentoInput=document.getElementById('detalhamento')
-let descricaoInput=document.getElementById('descricao')
-let btnSalvar=document.getElementById('btn1')
+let detalhamentoInput = document.getElementById("detalhamento");
+let descricaoInput = document.getElementById("descricao");
+let btnSalvar = document.getElementById("btn1");
 
-btnSalvar.addEventListener('click',criarRecado)
+btnSalvar.addEventListener("onclick", criarRecado);
 
 function criarRecado() {
-  if ( !detalhamento.value || !descricao.value ){
-    alert('ops, preencha todos os campos.')
+  if (!detalhamento.value || !descricao.value) {
+    alert("ops, preencha todos os campos.");
     return;
   }
-  
- const recado = {
-  id:idGenerator(),
-  detalhamento:detalhamentoInput.value,
-  descricao:descricaoInput.value
- }
 
- usuarioON.recados.push(recado)
+  const recado = {
+    id: idGenerator(),
+    detalhamento: detalhamentoInput.value,
+    descricao: descricaoInput.value,
+  };
 
- setItemStorage('UsuarioOn',usuarioON)
+  usuarioON.recados.push(recado);
 
- imprimirRecados()
- 
+  setItemStorage("UsuarioOn", usuarioON);
 
+  imprimirRecados();
 }
 const idGenerator = () => {
   const time = new Date().getTime();
-   const id= Math.floor((1 + Math.random()) * time).toString(16).substring(1);
-   return id+id
-}
-
-
-
-
+  const id = Math.floor((1 + Math.random()) * time)
+    .toString(16)
+    .substring(1);
+  return id + id;
+};
 
 function imprimirRecados() {
-  
-      let tbody = document.getElementById('tbody');
-      tbody.innerHTML = '';
-    
-      for(let i in usuarioON.recados) {
-        console.log('foi')
-           let tr = tbody.insertRow();
-    
-           let td_id = tr.insertCell();
-           let td_detalhamento = tr.insertCell();
-           let td_descricao = tr.insertCell();
-           let td_acao = tr.insertCell();
+  let tbody = document.getElementById("tbody");
+  tbody.innerHTML = "";
 
-           let indice=Number(i)+1
-    
-           td_id.innerHTML = indice ;
-           td_detalhamento.innerHTML = usuarioON.recados[i].detalhamento;
-           td_descricao.innerHTML = usuarioON.recados[i].descricao;
-           
-    
-           td_id.classList.add('center');
+  for (let i in usuarioON.recados) {
+    console.log("recados recarregados");
+    let tr = tbody.insertRow();
 
-           
-           let imgEdit = document.createElement('img');
-           imgEdit.src = 'caneta.png';
-           imgEdit.onclick=()=>editarRecado(usuarioON.recados[i].id);
-           let imgDelete = document.createElement('img');
-           imgDelete.src = 'prancheta.png';
-    imgDelete.onclick=()=> deletarRecado(usuarioON.recados[i].id);
-      
-           
-           td_acao.appendChild(imgEdit)
-           td_acao.appendChild(imgDelete)
-           
-           
-          }
-        }
+    let td_id = tr.insertCell();
+    let td_detalhamento = tr.insertCell();
+    let td_descricao = tr.insertCell();
+    let td_acao = tr.insertCell();
 
+    let indice = Number(i) + 1;
 
-        function editarRecado (id){
-          let det=document.getElementById('detalhamento');
-          let des=document.getElementById('descricao');
-          const index= usuarioON.recados.findIndex(valor => valor.id === id);
-          if(index<0){
-              alert('Recado não encontrado')
-              return;
-          }
-          det.value=usuarioON.recados[index].id
-          des.value=usuarioON.recados[index].id
-      
-          let editar=document.getElementById('btn1')
-          editar.innerHTML='Atualizar'
-          editar.onclick=()=>atualizaRecado(editar,det,des,index)
-      }
-    
-      function atualizaRecado(editar,det,des,index){
-          UsuarioON.recados[index].det=det.value
-          UsuarioON.recados[index].des=des.value
-          localStorage.setItem('UsuarioON'),JSON.stringify(UsuarioON)
-          imprimirRecados() // nome de tua função de imprimir
-          setTimeOut(()=>{
-            editar.innerHTML='Salvar'
-            editar.removeAttribute('onclick')
-          },1000)
-      }
+    td_id.innerHTML = indice;
+    td_detalhamento.innerHTML = usuarioON.recados[i].detalhamento;
+    td_descricao.innerHTML = usuarioON.recados[i].descricao;
 
-function deletarRecado(id){
-  const confirmeRecado = confirm('Tem certeza que deseja apagar?')
-  if(!confirmeRecado){
-    console.log( 'não apagou ',id)
-    return;
+    td_id.classList.add("center");
+
+    let imgEdit = document.createElement("img");
+    imgEdit.src = "caneta.png";
+    imgEdit.onclick = () => editarRecado(i);
+
+    let imgDelete = document.createElement("img");
+    imgDelete.src = "prancheta.png";
+    imgDelete.onclick = () => deletarRecado(i);
+
+    td_acao.appendChild(imgEdit);
+    td_acao.appendChild(imgDelete);
   }
-  const deletarRecados = usuarioON.recados.filter((value) => value.id !== id);
-  usuarioON.recados = deletarRecados
-  setItemStorage('UsuarioOn',usuarioON)
+}
+
+function editarRecado(index) {
+  let det = document.getElementById("detalhamento");
+  let des = document.getElementById("descricao");
+
+  if (index < 0) {
+    return alert("Recado não encontrado");
+  }
+
+  index = parseInt(index);
+
+  det.value = usuarioON.recados[index].detalhamento;
+  des.value = usuarioON.recados[index].descricao;
+
+  btnSalvar.innerHTML = "Atualizar";
+  btnSalvar.removeAttribute("onclick");
+  btnSalvar.onclick = () => atualizaRecado(index);
+}
+
+function atualizaRecado(index) {
+  let det = document.getElementById("detalhamento");
+  let des = document.getElementById("descricao");
+
+  usuarioON.recados[index].detalhamento = det.value;
+  usuarioON.recados[index].descricao = des.value;
+
+  setItemStorage("UsuarioOn", usuarioON);
   imprimirRecados();
 
-  
+  setTimeout(() => {
+    btnSalvar.innerHTML = "Salvar";
+    btnSalvar.removeAttribute("onclick");
+    btnSalvar.onclick = () => editarRecado(index);
+  }, 1000);
 }
- 
 
+function deletarRecado(index) {
+  const confirmeRecado = confirm("Tem certeza que deseja apagar?");
 
-        
-        
-        function getItemStorage(key){
-         return JSON.parse(localStorage.getItem(key))
-        }
+  if (!confirmeRecado) {
+    return console.log("não apagou ", index);
+  }
 
-        function setItemStorage(key,valor){
-          localStorage.setItem(key,JSON.stringify(valor))}
+  const deletarRecados = usuarioON.recados.filter((value, i) => i != index);
+  usuarioON.recados = deletarRecados;
 
+  setItemStorage("UsuarioOn", usuarioON);
+  imprimirRecados();
+}
 
-function atualizarRecados () {
-  const usuarios = getItemStorage('usuarios')
-  usuarios.forEach(element => {
-    if(element.email === usuarioON.email){
+function getItemStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+function setItemStorage(key, valor) {
+  localStorage.setItem(key, JSON.stringify(valor));
+}
+
+function atualizarRecados() {
+  const usuarios = getItemStorage("usuarios");
+  usuarios.forEach((element) => {
+    if (element.email === usuarioON.email) {
       element.recados = usuarioON.recados;
     }
   });
-  setItemStorage('usuarios', usuarios);
+  setItemStorage("usuarios", usuarios);
 }
 
-function sair(){
+function sair() {
   window.location.href = "entrar.html";
 }
