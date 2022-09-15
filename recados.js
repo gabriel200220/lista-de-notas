@@ -124,7 +124,7 @@ if (!usuarioON) {
 }
 
 const btnSair = document.getElementById("sair");
-btnSair.addEventListener("onclick", () => {
+btnSair.addEventListener("click", () => {
   atualizarRecados();
   localStorage.removeItem("UsuarioOn");
   sair();
@@ -256,6 +256,7 @@ function deletarRecado(index) {
 
   setItemStorage("UsuarioOn", usuarioON);
   imprimirRecados();
+  
 }
 
 function getItemStorage(key) {
